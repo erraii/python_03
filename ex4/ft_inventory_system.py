@@ -21,7 +21,7 @@ if __name__ == "__main__":
                     try:
                         inv_data.update({item[0]: int(item[1])})
                     except Exception as e:
-                        print(f"Quantity error for 'key': {e}")
+                        print(f"Quantity error for '{item[0]}': {e}")
         # print data if dictionary has item
         inv_len = len(inv_data)
         item_list = []
@@ -43,14 +43,17 @@ if __name__ == "__main__":
             max_item: str = ""
             min_item: str = ""
             for key in inv_data.keys():
-                repr_perc = round((inv_data[key] / sum(quant_list)) * 100, 1)
+                try:
+                    r_perc = round((inv_data[key] / sum(quant_list)) * 100, 1)
+                except ZeroDivisionError:
+                    r_perc = 0.0
                 if not max_item:
                     if inv_data[key] == max_abundant:
                         max_item = key
                 if not min_item:
                     if inv_data[key] == min_abundant:
                         min_item = key
-                print(f"Item {key} represents {repr_perc}%")
+                print(f"Item {key} represents {r_perc}%")
             print(f"Item most abundant: {max_item}", end=" ")
             print(f"with quantity {inv_data[max_item]}")
             print(f"Item least abundant: {min_item}", end=" ")
