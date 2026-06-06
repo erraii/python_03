@@ -2,10 +2,10 @@ import math
 
 
 def get_player_pos() -> tuple[float, ...]:
-    coordinates = []
     while True:
-        len = 0
-        user_in = input("Enter new coordinates as floats in format 'x,y,z':")
+        coordinates = []
+        len_coor = 0
+        user_in = input("Enter new coordinates as floats in format 'x,y,z': ")
         if user_in.count(",") != 2:
             print("Invalid syntax")
             continue
@@ -15,8 +15,8 @@ def get_player_pos() -> tuple[float, ...]:
             except Exception as e:
                 print(f"Error on parameter '{coord}': {e}")
             else:
-                len += 1
-        if len == 3:
+                len_coor += 1
+        if len_coor == 3:
             return (tuple(coordinates))
 
 
@@ -31,7 +31,7 @@ if __name__ == "__main__":
     print(f"It includes: X={X1}, Y={Y1}, Z={Z1}")
     d_to_center = math.sqrt(X1**2 + Y1**2 + Z1**2)
     print(f"Distance to center: {round(d_to_center,4)}")
-    print("\nGet a first set of coordinates")
+    print("\nGet a second set of coordinates")
     coordinates2 = get_player_pos()
     X2 = coordinates2[0]
     Y2 = coordinates2[1]
