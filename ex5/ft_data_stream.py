@@ -1,4 +1,4 @@
-from typing import Generator
+import typing
 import random
 
 
@@ -6,7 +6,7 @@ players = ["bob", "alice", "dylan", "charlie"]
 actions = ["run", "eat", "sleep", "grab", "move", "climb", "swim", "release"]
 
 
-def gen_event() -> Generator[tuple[str, str], None, None]:
+def gen_event() -> typing.Generator[tuple[str, str], None, None]:
     players_len = len(players)
     actions_len = len(actions)
     while True:
@@ -16,8 +16,8 @@ def gen_event() -> Generator[tuple[str, str], None, None]:
 
 
 def consume_event(event_list:
-                  list[tuple[str, str]]) -> Generator[tuple[str, str],
-                                                      None, None]:
+                  list[tuple[str, str]]) -> typing.Generator[tuple[str, str],
+                                                             None, None]:
     while event_list:
         event_id = random.randint(0, len(event_list) - 1)
         rand_event = event_list[event_id]
@@ -28,7 +28,7 @@ def consume_event(event_list:
 def main() -> None:
     print("=== Game Data Stream Processor ===")
     event = gen_event()
-    for i in range(100):
+    for i in range(1000):
         next_event = next(event)
         print(f"Event {i}: Player {next_event[0]} did action {next_event[1]}")
     event_list = []
