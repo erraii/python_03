@@ -6,12 +6,13 @@ if __name__ == "__main__":
     for arg in sys.argv[1:]:
         try:
             scores.append(int(arg))
-        except Exception:
+        except ValueError:
             print(f"Invalid parameter: '{arg}'")
     total_players = len(scores)
     if total_players > 0:
         print(f"Scores processed: {scores}")
         print(f"Total players: {total_players}")
+        print(f"Total score: {sum(scores)}")
         # average_score = sum(scores) / total_players
         print(f"Average score: {sum(scores) / total_players}")
         print(f"High score: {max(scores)}")
