@@ -28,14 +28,14 @@ if __name__ == "__main__":
                                                ["Charlie", set()],
                                                ["Dylan", set()]]
     union_achvs: set[str] = set()
-    commen_achvs = set(achievements)
+    common_achvs = set(achievements)
     for player in player_list:
         player[1] = gen_player_achievements()
         print(f"Player {player[0]}: {player[1]}")
         union_achvs = union_achvs.union(player[1])
-        commen_achvs = commen_achvs.intersection(player[1])
+        common_achvs = common_achvs.intersection(player[1])
     print(f"\nAll distinct achievements: {union_achvs}")
-    print(f"\nCommon achievements: {commen_achvs}")
+    print(f"\nCommon achievements: {common_achvs}")
     print("")
     for player1 in player_list:
         unique_achvs: set[str] = set()
